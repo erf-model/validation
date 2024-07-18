@@ -1,5 +1,8 @@
 import numpy as np
 import xarray as xr
+import glob
+import os
+from erftools.postprocessing import AveragedProfiles, Column
 
 Tsim = 32400.
 
@@ -40,7 +43,8 @@ def load_erf_scm(dpath='.',dt=1.0,Tavg=3600.):
         # load column data
         df = Column(pltfiles).df
         # ugly way to time-average starting from a multiindex
-        df = df.unstack().mean().unstack().T
+        if len(pltfiles) > 1:
+            df = df.unstack().mean().unstack().T
         ds = df.to_xarray()
         ds = ds.rename_vars(height='z').swap_dims(height='z')
         ds['hvelmag'] = ('z', np.sqrt(ds['x_velocity']**2 + ds['y_velocity']**2).values)
