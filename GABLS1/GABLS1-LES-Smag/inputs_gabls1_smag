@@ -78,9 +78,9 @@ erf.Cs              = 0.17  # following Gadde et al 2020 BLM
 #erf.rho0_trans      = 1.3223 # from Beare et al. 2006
 #erf.theta_ref       = 263.5 # from Beare et al. 2006
 
-erf.use_rayleigh_damping = true
-prob.dampcoef = 0.2 # [1/s] following FastEddy
-prob.zdamp = 100. # from Beare et al. 2006, "most models applied gravity wave damping above 300 m"
+erf.rayleigh_damp_W = true
+erf.rayleigh_dampcoef = 0.2 # [1/s] following FastEddy
+erf.rayleigh_zdamp = 100. # from Beare et al. 2006, "most models applied gravity wave damping above 300 m"
 
 # Initial conditions from Beare et al. 2006
 prob.KE_0            = 0.4 # [m2/s2]
